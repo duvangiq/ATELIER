@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Atelier Contable - Consultoría Creativa en Finanzas y Arte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-highway.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      :root {
+        --primary-dark: #1b4332;
+        --primary: #2d6a4f;
+        --primary-light: #40916c;
+        --accent: #d8f3dc;
+        --text-dark: #081c15;
+        --text-light: #f8f9fa;
+      }
+      
+      body {
+        font-family: 'Raleway', sans-serif;
+        color: var(--text-dark);
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+      }
+      h1, h2, h3, h4 {
+        font-weight: 700;
+        color: var(--primary-dark);
+      }
+      .navigation {
+        background-color: var(--primary-dark);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .logo a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 24px;
+      }
+      .hero {
+        background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(27, 67, 50, 0.9)), url('https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixlib=rb-4.0.3') no-repeat center center;
+        background-size: cover;
+        color: white;
+        padding: 120px 0;
+        text-align: center;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .title {
+        font-size: 48px;
+        margin: 10px 0;
+        color: white;
+      }
+      .pre-title, .post-title {
+        font-size: 24px;
+        margin: 5px 0;
+        color: var(--accent);
+      }
+      .services .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .services .card {
+        transition: transform 0.3s;
+        height: 100%;
+        border-color: var(--primary-light) !important;
+      }
+      .services .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(45, 106, 79, 0.15);
+      }
+      .services .card h3 {
+        color: var(--primary);
+      }
+      .value-prop {
+        background-color: var(--accent);
+        padding: 40px 0;
+      }
+      .value-item {
+        text-align: center;
+        padding: 20px;
+      }
+      .value-icon {
+        font-size: 40px;
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+      .team-member {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .team-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        background-color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 60px;
+        margin: 0 auto 15px;
+      }
+      .contact-info a {
+        color: var(--primary-dark);
+        text-decoration: none;
+      }
+      .contact-info a:hover {
+        text-decoration: underline;
+        color: var(--primary);
+      }
+      .btn-atelier {
+        background-color: var(--primary);
+        color: white;
+      }
+      .btn-atelier:hover {
+        background-color: var(--primary-dark);
+        color: white;
+      }
+      .w3-border-green {
+        border-color: var(--primary-light) !important;
+      }
+      footer {
+        background-color: var(--primary-dark) !important;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+      }
+      .form-container {
+        background-color: var(--accent) !important;
+      }
+      input, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        font-family: 'Raleway', sans-serif;
+      }
+      input:focus, textarea:focus {
+        border-color: var(--primary);
+        outline: none;
+      }
+      .links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      .links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .mobile-button {
+        display: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      
+      /* Estilos para el menú móvil */
+      #mobile-sidenav {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: var(--primary-dark);
+        padding-top: 60px;
+        transition: 0.5s;
+        z-index: 1000;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+      }
+      
+      #mobile-sidenav.mobile-links-active {
+        right: 0;
+      }
+      
+      #mobile-sidenav a {
+        padding: 15px 25px;
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      
+      #mobile-sidenav a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      
+      #mobile-sidenav .closebtn {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 30px;
+      }
+      
+      @media screen and (max-width: 768px) {
+        .links {
+          display: none;
+        }
+        .mobile-button {
+          display: block;
+        }
+        .services .cards {
+          grid-template-columns: 1fr;
+        }
+        .team .w3-row-padding {
+          flex-direction: column;
+        }
+        .team .w3-quarter {
+          width: 100%;
+          margin-bottom: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+      <div class="navigation w3-container">
+        <nav class="nav-container">
+          <div class="logo">
+            <a href="#home">ATELIER</a>
+          </div>
+          <div class="links">
+            <a href="#about">Nosotros</a>
+            <a href="#services">Servicios</a>
+            <a href="#value">Propuesta de Valor</a>
+            <a href="#team">Equipo</a>
+            <a href="#contact">Contacto</a>            
+          </div>
+          <div class="mobile-button">
+            <span style="float: right;" onclick="toggleMobileNavigation()">&#9776;</span>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Menú móvil -->
+      <div id="mobile-sidenav" class="mobile-links">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMobileNavigation()">&times;</a>
+        <a href="#about" onclick="toggleMobileNavigation()">Nosotros</a>
+        <a href="#services" onclick="toggleMobileNavigation()">Servicios</a>
+        <a href="#value" onclick="toggleMobileNavigation()">Propuesta de Valor</a>
+        <a href="#team" onclick="toggleMobileNavigation()">Equipo</a>
+        <a href="#contact" onclick="toggleMobileNavigation()">Contacto</a>
+      </div>
+
+      <div class="hero" id="home">
+        <div class="text container">
+          <p class="pre-title">Bienvenido a</p>
+          <h1 class="title">ATELIER CONTABLE</h1>
+          <p class="post-title">Finanzas creativas para el arte</p>
+          <a class="w3-button w3-round-large btn-atelier w3-hover-green" href="#services">NUESTROS SERVICIOS</a> 
+        </div>
+      </div>
+
+      <div class="about container w3-padding-large" id="about">
+        <div class="text-one">
+          <h2 class="w3-center">Sobre Nosotros</h2>
+          <p>Somos una microempresa orientada a brindar servicios profesionales dentro del sector empresarial de la Economía Naranja. Nuestra actividad principal se centra en ofrecer consultoría contable y financiera adaptada a las necesidades de artistas, gestores culturales y proyectos creativos, con el fin de fortalecer la economía del sector cultural dentro de Cartagena de Indias, ciudad reconocida por su riqueza cultural y artística.</p>
+        </div>
+      </div>
+
+      <div class="services container w3-padding-large" id="services">
+        <h2 class="w3-center">Nuestros Servicios</h2>
+        <div class="cards w3-padding-large w3-margin-top">
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-green w3-round-large">
+            <h3>Consultoría contable creativa</h3>
+            <div class="card-text">
+              <p>Servicio especializado en la gestión financiera y tributaria del sector cultural, diseñado para responder a las particularidades de los artistas y proyectos creativos. Combina el rigor técnico de la contaduría con un enfoque didáctico y accesible.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-green w3-round-large">
+            <h3>Talleres y residencias contables</h3>
+            <div class="card-text">
+              <p>Espacios de formación práctica en los que los artistas adquieren conocimientos básicos en finanzas, derechos de autor y regalías. Estos programas promueven el empoderamiento económico y fortalecen la sostenibilidad de los proyectos creativos.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-green w3-round-large">
+            <h3>Informes financieros visuales</h3>
+            <div class="card-text">
+              <p>Reportes contables presentados en formatos gráficos y estéticos que facilitan la comprensión, tanto para artistas como para inversionistas. Estos documentos fusionan arte y finanzas, generando confianza y transparencia en la gestión cultural.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-green w3-round-large">
+            <h3>Gestión de regalías y derechos de autor</h3>
+            <div class="card-text">
+              <p>Administración profesional de los derechos de autor y regalías para artistas, asegurando un manejo adecuado de sus ingresos y el cumplimiento de las obligaciones legales.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-green w3-round-large">
+            <h3>Eventos Arte + Finanzas</h3>
+             <div class="card-text">
+              <p>Organización de eventos que fusionan el mundo artístico con el financiero, creando espacios de networking y aprendizaje para artistas, gestores culturales e inversionistas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="value-prop w3-padding-large" id="value">
+        <div class="container">
+          <h2 class="w3-center">Nuestra Propuesta de Valor</h2>
+          <div class="w3-row-padding w3-margin-top">
+            <div class="w3-third">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fa fa-paint-brush"></i>
+                </div>
+                <h3>Empoderamiento artístico</h3>
+                <p>Capacitamos a los artistas para que gestionen sus finanzas de manera autónoma y profesional.</p>
+              </div>
+            </div>
+            <div class="w3-third">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fa fa-line-chart"></i>
+                </div>
+                <h3>Credibilidad ante inversionistas</h3>
+                <p>Nuestros informes financieros visuales generan confianza y transparencia para atraer inversión.</p>
+              </div>
+            </div>
+            <div class="w3-third">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fa fa-language"></i>
+                </div>
+                <h3>Acceso inclusivo al lenguaje financiero</h3>
+                <p>Traducimos la complejidad financiera a un lenguaje accesible para los creadores.</p>
+              </div>
+            </div>
+          </div>
+          <div class="w3-row-padding w3-margin-top">
+            <div class="w3-third">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fa fa-lightbulb-o"></i>
+                </div>
+                <h3>Innovación cultural</h3>
+                <p>Fusionamos arte y finanzas creando nuevas formas de gestionar la economía creativa.</p>
+              </div>
+            </div>
+            <div class="w3-third">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fa fa-users"></i>
+                </div>
+                <h3>Enfoque personalizado</h3>
+                <p>Adaptamos nuestros servicios a las necesidades específicas de cada artista o proyecto.</p>
+              </div>
+            </div>
+            <div class="w3-third">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fa fa-map-marker"></i>
+                </div>
+                <h3>Especialización local</h3>
+                <p>Conocemos el ecosistema cultural de Cartagena y sus particularidades económicas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team container w3-padding-large" id="team">
+        <h2 class="w3-center">Nuestro Equipo</h2>
+        <div class="w3-row-padding w3-margin-top">
+          <div class="w3-quarter">
+            <div class="team-member">
+              <div class="team-img"><i class="fa fa-user"></i></div>
+              <h3>Maria Paula Alcalá Vergara</h3>
+            </div>
+          </div>
+          <div class="w3-quarter">
+            <div class="team-member">
+              <div class="team-img"><i class="fa fa-user"></i></div>
+              <h3>Jired Ortiz Cassiani</h3>
+            </div>
+          </div>
+          <div class="w3-quarter">
+            <div class="team-member">
+              <div class="team-img"><i class="fa fa-user"></i></div>
+              <h3>Hillary Elena Padilla Muñoz</h3>
+            </div>
+          </div>
+          <div class="w3-quarter">
+            <div class="team-member">
+              <div class="team-img"><i class="fa fa-user"></i></div>
+              <h3>Luis Daniel Solipa Castro</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact container w3-padding-large" id="contact">
+        <div class="short-contact">
+          <h2>Contáctanos</h2>
+          <p class="w3-xlarge">¡Nos encantaría saber de ti!</p>
+          <div class="w3-large w3-margin-top contact-info">
+            <i class="fa fa-location-arrow"></i><span style="margin-left:10px;">Cartagena de Indias, Colombia</span><br>
+            <i class="fa fa-envelope-o"></i><span style="margin-left:10px;"><a href="mailto:ateliercontable.ctg@gmail.com">ateliercontable.ctg@gmail.com</a></span><br>
+            <i class="fa fa-phone"></i><span style="margin-left:10px;"><a href="tel:+573216139376">+57 321 613 9376</a></span><br>
+          </div>
+          <div class="w3-large w3-margin-top contact-info">
+            <i class="fa fa-linkedin"></i><span style="margin-left:10px;"><a href="#" target="_blank" style="text-decoration: none;">LinkedIn</a></span><br>
+            <i class="fa fa-facebook"></i><span style="margin-left:10px;"><a href="#" target="_blank" style="text-decoration: none;">Facebook</a></span><br>
+            <i class="fa fa-instagram"></i><span style="margin-left:10px;"><a href="#" target="_blank" style="text-decoration: none;">Instagram</a></span><br>
+          </div>
+        </div>
+        <div class="form w3-margin-top">
+          <div class="container w3-round-xlarge form-container">
+            <form class="w3-padding-large w3-round-large">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name" placeholder="Tu nombre">
+
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="Tu email">
+
+              <label for="subject">Mensaje</label>
+              <textarea id="subject" name="subject" placeholder="Escribe tu mensaje..." style="height:200px"></textarea>
+              
+              <p>Al enviar este formulario, aceptas nuestra <a href="#" target="_blank">política de privacidad</a></p><br>
+              <input class="w3-button w3-round-large btn-atelier" type="submit" value="Enviar">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-padding-large" id="footer">
+        <p class="w3-center">© 2023 - ATELIER CONTABLE - Todos los derechos reservados</p>
+      </div>
+
+  <script>
+    function toggleMobileNavigation() {
+      const mobileNavigation = document.getElementById("mobile-sidenav");
+      mobileNavigation.classList.toggle('mobile-links-active');
+    }
+  </script>
+  </body>
+</html>
